@@ -1,0 +1,351 @@
+{
+	"info": {
+		"_postman_id": "5594aa54-9f62-46da-9cba-c44114b3b819",
+		"name": "pokemons",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28713512"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "regUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nickname\":\"qweqwe\",\r\n    \"password\": \"12311232\",\r\n    \"reEnteredPassword\":\"12311232\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5555/auth/signup",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nickname\":\"qweqwe\",\r\n    \"password\": \"12311232\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5555/auth/signin",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nickname\":\"sdaasd\",\r\n    \"password\": \"12311232\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5555/auth/logout",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refreshTokens",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5555/auth/refresh",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "pokemons",
+			"item": [
+				{
+					"name": "getAllPokemons",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsIm5pY2tuYW1lIjoic2RhYXNkIiwiaWF0IjoxNzA4OTg0NTA5LCJleHAiOjE3MDg5ODU0MDl9.XW5wjsMkn2JZD-gJl96TtBAJlwMZzEUlf6L_wQkaaKM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5555/api/pokemons",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"api",
+								"pokemons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllTypes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsIm5pY2tuYW1lIjoic2RhYXNkIiwiaWF0IjoxNzA4OTg0OTQzLCJleHAiOjE3MDg5ODU4NDN9.eqpjOUALmuMKH4bipcVrfiIDoJ_ZlQINq0lDXpq0bj8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5555/api/types",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"api",
+								"types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getParametersByName",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsIm5pY2tuYW1lIjoic2RhYXNkIiwiaWF0IjoxNzA5MDA2MTUxLCJleHAiOjE3MDkwMDcwNTF9.Ea0ixZ6JMM_n8ZxKEXmt94xQlQqm10IyiUzwPyBCp6o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5555/api/parameters/Pikachu",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"api",
+								"parameters",
+								"Pikachu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getStatsByName",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsIm5pY2tuYW1lIjoic2RhYXNkIiwiaWF0IjoxNzA4OTk5MjUzLCJleHAiOjE3MDkwMDAxNTN9.bF8csroeuUwZN2oBFbGQ8xCxZ49Qa8vm4_MxRTgw-O8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5555/api/stats/Pikachu",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"api",
+								"stats",
+								"Pikachu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getImgByName",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsIm5pY2tuYW1lIjoic2RhYXNkIiwiaWF0IjoxNzA4OTk5MjUzLCJleHAiOjE3MDkwMDAxNTN9.bF8csroeuUwZN2oBFbGQ8xCxZ49Qa8vm4_MxRTgw-O8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5555/api/imgs/Pikachu",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"api",
+								"imgs",
+								"Pikachu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getEvolByName",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsIm5pY2tuYW1lIjoic2RhYXNkIiwiaWF0IjoxNzA4OTk5MjUzLCJleHAiOjE3MDkwMDAxNTN9.bF8csroeuUwZN2oBFbGQ8xCxZ49Qa8vm4_MxRTgw-O8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5555/api/evolution/qw",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"api",
+								"evolution",
+								"qw"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "rate",
+			"item": [
+				{
+					"name": "setRate",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsIm5pY2tuYW1lIjoicXdlcXdlIiwiaWF0IjoxNzA5MDA3OTMwLCJleHAiOjE3MDkwMDg4MzB9.iJv1TZ2KJb2TDYk37JnN_jnMjy-aimvbT7ieusN4uhw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Pikachu\",\r\n    \"rate\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5555/rate",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"rate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "topDay",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
