@@ -6,6 +6,12 @@ class PokemonRepo{
         this.models = initModels(db)
     }
 
+    async getIdByName(name){
+        return await this.models.pokemons.findOne({
+            where: {pokemon_name:name}
+        })
+    }
+
     async getAllPokemons(){
         return await this.models.pokemons.findAll({
             attributes:['pokemon_id', 'pokemon_name'],
@@ -28,11 +34,28 @@ class PokemonRepo{
         return await this.models.pokemons.findOne({
             where: {pokemon_name:name},
             attributes:['pokemon_id', 'pokemon_name', 'pokemon_height','pokemon_weight'],
-            include:{
+            include:[{
                 model: this.models.categories,
                 as: 'category',
                 attributes:['category_name']
+            },
+            {
+                model: this.models.abilities,
+                as: 'abilities',
+                through:{
+                    attributes:[]
+                },
+                attributes:['ability_name']
+            },
+            {
+                model: this.models.genders,
+                as: 'genders',
+                through:{
+                    attributes:['percent']
+                },
+                attributes:['gender_name']
             }
+        ]
         })
     }
 

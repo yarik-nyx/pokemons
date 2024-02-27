@@ -28,28 +28,31 @@ function initModels(sequelize) {
   var type = _type(sequelize, DataTypes);
   var users = _users(sequelize, DataTypes);
 
-  pokemons_abilities.belongsTo(abilities, { as: "ability", foreignKey: "ability_id"});
-  abilities.hasMany(pokemons_abilities, { as: "pokemons_abilities", foreignKey: "ability_id"});
+  //pokemons - abilities
+  pokemons.belongsToMany(abilities, { through: 'pokemons_abilities', foreignKey: 'pokemon_id'});
+  abilities.belongsToMany(pokemons, { through: 'pokemons_abilities',  foreignKey: 'ability_id'});
+  //pokemons - genders
+  pokemons.belongsToMany(genders, { through: 'pokemons_genders', foreignKey: 'pokemon_id' });
+  genders.belongsToMany(pokemons, { through: 'pokemons_genders',  foreignKey: 'gender_id'});
+  //pokemons - types
+  pokemons.belongsToMany(type, { through: 'pokemons_types', foreignKey: 'pokemon_id' });
+  type.belongsToMany(pokemons, { through: 'pokemons_types',  foreignKey: 'type_id'});
+
   pokemons.belongsTo(categories, { as: "category", foreignKey: "category_id"});
   categories.hasMany(pokemons, { as: "pokemons", foreignKey: "category_id"});
+
   pokemons.belongsTo(evolutions, { as: "evolution", foreignKey: "evolution_id"});
   evolutions.hasMany(pokemons, { as: "pokemons", foreignKey: "evolution_id"});
-  pokemons_genders.belongsTo(genders, { as: "gender", foreignKey: "gender_id"});
-  genders.hasMany(pokemons_genders, { as: "pokemons_genders", foreignKey: "gender_id"});
-  pokemons_abilities.belongsTo(pokemons, { as: "pokemon", foreignKey: "pokemon_id"});
-  pokemons.hasMany(pokemons_abilities, { as: "pokemons_abilities", foreignKey: "pokemon_id"});
-  pokemons_genders.belongsTo(pokemons, { as: "pokemon", foreignKey: "pokemon_id"});
-  pokemons.hasMany(pokemons_genders, { as: "pokemons_genders", foreignKey: "pokemon_id"});
-  pokemons_types.belongsTo(pokemons, { as: "pokemon", foreignKey: "pokemon_id"});
-  pokemons.hasMany(pokemons_types, { as: "pokemons_types", foreignKey: "pokemon_id"});
+
   rating.belongsTo(pokemons, { as: "pokemon", foreignKey: "pokemon_id"});
   pokemons.hasMany(rating, { as: "ratings", foreignKey: "pokemon_id"});
+
   pokemons.belongsTo(stats, { as: "stat", foreignKey: "stat_id"});
   stats.hasOne(pokemons, { as: "pokemon", foreignKey: "stat_id"});
-  pokemons_types.belongsTo(type, { as: "type", foreignKey: "type_id"});
-  type.hasMany(pokemons_types, { as: "pokemons_types", foreignKey: "type_id"});
+
   rating.belongsTo(users, { as: "user", foreignKey: "user_id"});
   users.hasMany(rating, { as: "ratings", foreignKey: "user_id"});
+
   tokens.belongsTo(users, { as: "user", foreignKey: "user_id"});
   users.hasMany(tokens, { as: "tokens", foreignKey: "user_id"});
 

@@ -4,6 +4,7 @@ import express from 'express'
 import cookieParser from 'cookie-parser'
 import {authRouter} from './src/routes/auth.js'
 import {apiRouter} from './src/routes/api.js'
+import {rateRouter} from './src/routes/rate.js'
 import {errorMid} from './src/middlewares/errorMid.js'
 
 const app = express()
@@ -13,6 +14,7 @@ app.use(express.json())
 app.use(cookieParser())
 app.use('/auth', authRouter)
 app.use('/api', apiRouter)
+app.use('/rate', rateRouter)
 app.use(errorMid)
 
 app.listen(PORT, (err) => {

@@ -24,14 +24,14 @@ export default function(sequelize, DataTypes) {
       }
     },
     stars: {
-      type: DataTypes.DECIMAL,
-      allowNull: true
-    }
+      type: DataTypes.FLOAT,
+      allowNull: false
+    },
   }, {
     sequelize,
     tableName: 'rating',
     schema: 'public',
-    timestamps: false,
+    timestamps: true,
     indexes: [
       {
         name: "rating_pk",
