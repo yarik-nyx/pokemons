@@ -21,6 +21,24 @@ class RateController{
             next(error)
         }
     }
+
+    async topWeek(req, res, next){
+        try {
+            const data = await rateService.topWeek()
+            return res.status(200).json(data)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async topMonth(req, res, next){
+        try {
+            const data = await rateService.topMonth()
+            return res.status(200).json(data)
+        } catch (error) {
+            next(error)
+        }
+    }
 }
 
 export const rateController = new RateController()

@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nickname\":\"qweqwe\",\r\n    \"password\": \"12311232\",\r\n    \"reEnteredPassword\":\"12311232\"\r\n}",
+							"raw": "{\r\n    \"nickname\":\"testtest\",\r\n    \"password\": \"testtest\",\r\n    \"reEnteredPassword\":\"testtest\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -183,7 +183,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsIm5pY2tuYW1lIjoic2RhYXNkIiwiaWF0IjoxNzA5MDA2MTUxLCJleHAiOjE3MDkwMDcwNTF9.Ea0ixZ6JMM_n8ZxKEXmt94xQlQqm10IyiUzwPyBCp6o",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsIm5pY2tuYW1lIjoidGVzdHRlc3QiLCJpYXQiOjE3MDkyNjc3MDAsImV4cCI6MTcwOTI2ODYwMH0.L_XzJN-qF1h8hiTH7_sTf7QuroEN_z3xDpHmKqEhQeI",
 									"type": "string"
 								}
 							]
@@ -191,7 +191,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:5555/api/parameters/Pikachu",
+							"raw": "localhost:5555/api/parameters/Pachirisu",
 							"host": [
 								"localhost"
 							],
@@ -199,7 +199,7 @@
 							"path": [
 								"api",
 								"parameters",
-								"Pikachu"
+								"Pachirisu"
 							]
 						}
 					},
@@ -308,7 +308,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsIm5pY2tuYW1lIjoicXdlcXdlIiwiaWF0IjoxNzA5MDA3OTMwLCJleHAiOjE3MDkwMDg4MzB9.iJv1TZ2KJb2TDYk37JnN_jnMjy-aimvbT7ieusN4uhw",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsIm5pY2tuYW1lIjoicXdlcXdlIiwiaWF0IjoxNzA5MjYzNDU4LCJleHAiOjE3MDkyNjQzNTh9.VHD1RIASejxZyH0Zo5GlU4ozIuLLiitKHRVk4Mf7kCQ",
 									"type": "string"
 								}
 							]
@@ -317,7 +317,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"Pikachu\",\r\n    \"rate\": 4\r\n}",
+							"raw": "{\r\n    \"name\":\"Pikachu\",\r\n    \"rate\": 5\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -340,8 +340,87 @@
 				{
 					"name": "topDay",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsIm5pY2tuYW1lIjoidGVzdHRlc3QiLCJpYXQiOjE3MDkyNjc3MDAsImV4cCI6MTcwOTI2ODYwMH0.L_XzJN-qF1h8hiTH7_sTf7QuroEN_z3xDpHmKqEhQeI",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "localhost:5555/rate/day",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"rate",
+								"day"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "topWeek",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsIm5pY2tuYW1lIjoidGVzdHRlc3QiLCJpYXQiOjE3MDkyNjc3MDAsImV4cCI6MTcwOTI2ODYwMH0.L_XzJN-qF1h8hiTH7_sTf7QuroEN_z3xDpHmKqEhQeI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5555/rate/week",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"rate",
+								"week"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "topMonth",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsIm5pY2tuYW1lIjoidGVzdHRlc3QiLCJpYXQiOjE3MDkyNjc3MDAsImV4cCI6MTcwOTI2ODYwMH0.L_XzJN-qF1h8hiTH7_sTf7QuroEN_z3xDpHmKqEhQeI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5555/rate/month",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"rate",
+								"month"
+							]
+						}
 					},
 					"response": []
 				}

@@ -1,7 +1,7 @@
 import {rateRepo} from '../repos/RateRepo.js'
 import {pokemonRepo} from '../repos/PokemonRepo.js'
 import {ApiError} from '../exceptions/ApiError.js'
-import { DATEONLY } from 'sequelize'
+import moment from 'moment'
 
 class RateService{
 
@@ -16,6 +16,8 @@ class RateService{
 
         if(curRate){
             curRate.stars = rate
+            const today = new Date()
+            curRate.updatedAt = today
             await curRate.save()
             
             return curRate
@@ -24,11 +26,24 @@ class RateService{
     }
 
     async topDay(){
-        const today = new Date();
-        const startOfDay = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-        const endOfDay = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
-        
-        return await rateRepo.topDay(startOfDay, endOfDay)
+        let startOfDay = moment().startOf('day')
+        let endOfDay= moment().endOf('dat')
+        console.log(startOfDay);
+        console.log(endOfDay);
+        return await rateRepo.topPokemon(startOfDay, endOfDay)
+    }
+
+    async topWeek(){
+        let startOfWeek = moment().startOf('week')
+        let endOfWeek = moment().endOf('week')
+
+        return await rateRepo.topPokemon(startOfWeek, endOfWeek)
+    }
+
+    async topMonth(){
+        let startOfMonth = moment().startOf('month')
+        let endOfMonth = moment().endOf('month')
+        return await rateRepo.topPokemon(startOfMonth, endOfMonth)
     }
 }
 

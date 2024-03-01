@@ -1,6 +1,7 @@
 import { db } from '../db/db.js'
 import { initModels } from '../models/init-models.js'
 import {Op} from 'sequelize'
+import Sequelize from 'sequelize'
 
 class RateRepo{
     constructor(initModels, db){
@@ -20,19 +21,37 @@ class RateRepo{
         })
     }
 
-    async topDay(startOfDay, endOfDay){
+    async topPokemon(startOfDay, endOfDay){
         return await this.models.rating.findAll({
             where: {
                 updatedAt: {
                     [Op.between]: [startOfDay, endOfDay]
                   },
             },
-            attributes: ['stars'],
             include:{
                 model: this.models.pokemons,
                 as: 'pokemon',
                 attributes: ['pokemon_name']
-            }
+            },
+            group:[
+                ['rating.pokemon_id'],
+                ['pokemon.pokemon_id'],
+                ['pokemon.pokemon_name'],
+                
+            ],
+            attributes: [
+            [Sequelize.fn('SUM', Sequelize.col('stars')), 'sum'],
+            [Sequelize.fn('COUNT', Sequelize.col('user_id')), 'count'],
+            [
+                Sequelize.literal('SUM(stars)/COUNT(user_id)'),
+                'average'
+            ],
+            ],
+            order:[
+                [Sequelize.literal('COUNT'), 'DESC'],
+                [Sequelize.literal('SUM'), 'DESC'],
+            ],
+            limit:1
         })
     }
 }

@@ -10,6 +10,6 @@ rateRouter.post('/', authMid, ValidatorRate, validErrorsMid, rateController.setR
 
 rateRouter.get('/day', authMid, rateController.topDay)
 
-rateRouter.get('/week', authMid)
+rateRouter.get('/week', authMid, rateController.topWeek)
 
-rateRouter.get('/month', authMid)
+rateRouter.get('/month', authMid, rateController.topMonth)
